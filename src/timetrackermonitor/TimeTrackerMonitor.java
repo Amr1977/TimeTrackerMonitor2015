@@ -40,20 +40,21 @@ public class TimeTrackerMonitor {
         while(true){
             for(int i = 0; i < numOfScreens; i++){
                 Screen screen = screens[i];
-                if ((screen.exists(onImageFileName, 2)) != null) {
+                if ((screen.exists(onImageFileName, 5)) != null) {
                     System.out.println(new Date() + " - Counting Time.");
                     SimpleAudioPlayer.playMp3("resources/on.wav");
                     Thread.sleep(60000);
-                    continue;
+                    break;
                 }
                 if ((screen.exists(offImageFileName, 2)) != null) {
                     System.out.println(new Date() + " - >>>>>>>>>>>>>>>> Not Counting Time !!");
                     SimpleAudioPlayer.playMp3("resources/off.wav");
                     Thread.sleep(60000);
-                    continue;
+                    break;
                 }
                 Thread.sleep(60000);
                 System.out.println("Can not recognize !");
+                SimpleAudioPlayer.playMp3("resources/off.wav");
             }
         }
         
