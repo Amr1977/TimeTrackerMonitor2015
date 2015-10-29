@@ -31,6 +31,7 @@ public class TimeTrackerMonitor {
         Region lastFound=null;
         boolean result=false;
         Settings.MinSimilarity=0.90;
+        long sleepTime=60000;
         
         for(int i=0;i<numOfScreens;i++ ){
             screens[i]=new Screen(i);
@@ -41,16 +42,16 @@ public class TimeTrackerMonitor {
                 if ((screen.exists(onImageFileName, 5)) != null) {
                     System.out.println(new Date() + " - Counting Time.");
                     SimpleAudioPlayer.playMp3("resources/on.wav");
-                    Thread.sleep(60000);
+                    Thread.sleep(sleepTime);
                     break;
                 }
                 if ((screen.exists(offImageFileName, 2)) != null) {
                     System.out.println(new Date() + " - >>>>>>>>>>>>>>>> Not Counting Time !!");
                     SimpleAudioPlayer.playMp3("resources/off.wav");
-                    Thread.sleep(60000);
+                    Thread.sleep(sleepTime);
                     break;
                 }
-                Thread.sleep(60000);
+                Thread.sleep(sleepTime);
                 System.out.println("Can not recognize !");
                 SimpleAudioPlayer.playMp3("resources/off.wav");
             }
