@@ -5,8 +5,6 @@
  */
 package timetrackermonitor;
 
-import java.io.File;
-import static java.lang.System.in;
 import java.util.Date;
 import org.sikuli.basics.Settings;
 import org.sikuli.script.*;
