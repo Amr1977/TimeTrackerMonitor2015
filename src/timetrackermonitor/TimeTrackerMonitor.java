@@ -32,7 +32,7 @@ public class TimeTrackerMonitor {
         String OffSoundFileName = "resources/off.wav"; 
         Region lastFound=null;
         boolean result=false;
-        Settings.MinSimilarity=0.97;
+        Settings.MinSimilarity=0.90;
         
         for(int i=0;i<numOfScreens;i++ ){
             screens[i]=new Screen(i);
