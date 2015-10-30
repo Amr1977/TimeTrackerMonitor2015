@@ -25,8 +25,6 @@ public class TimeTrackerMonitor {
         Thread trackerMonitorThread = new Thread() {
             public void run() {
 
-                int numOfScreens = Screen.getNumberScreens();
-                Screen[] screens = new Screen[numOfScreens];
                 String onImageFileName = "resources/on.png";
                 String offImageFileName = "resources/off.png";
                 String onSoundFileName = "resources/on.wav";
@@ -36,10 +34,12 @@ public class TimeTrackerMonitor {
                 Settings.MinSimilarity = 0.98;
                 long sleepTime = 60000;
 
-                for (int i = 0; i < numOfScreens; i++) {
-                    screens[i] = new Screen(i);
-                }
                 while (true) {
+                    int numOfScreens = Screen.getNumberScreens();
+                    Screen[] screens = new Screen[numOfScreens];
+                    for (int i = 0; i < numOfScreens; i++) {
+                        screens[i] = new Screen(i);
+                    }
                     for (int i = 0; i < numOfScreens; i++) {
                         try {
                             Screen screen = screens[i];
@@ -74,26 +74,23 @@ public class TimeTrackerMonitor {
             }
         };
         trackerMonitorThread.start();
-        
-        
-         Thread kbThread = new Thread()
-    {
-        public void run() {
-            System.out.println("Type x to exit.");
-            while(true){
-                System.out.print("Command: ");
-                String input = System.console().readLine();
-                if("x".toLowerCase().equalsIgnoreCase(input)){
-                    System.out.println("Exiting");
-                    System.exit(0);
+
+        Thread kbThread = new Thread() {
+            public void run() {
+                System.out.println("Type x to exit.");
+                while (true) {
+                    System.out.print("Command: ");
+                    String input = System.console().readLine();
+                    if ("x".toLowerCase().equalsIgnoreCase(input)) {
+                        System.out.println("Exiting");
+                        System.exit(0);
+                    }
                 }
+
             }
-            
-            
-        }
-    };
-    kbThread.start();
-        
+        };
+        kbThread.start();
+
     }
 
 }
