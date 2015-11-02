@@ -64,7 +64,7 @@ public class TimeTrackerMonitor {
                                 }
                             }
                             Thread.sleep(sleepTime);
-                            System.out.println("Can not recognize !");
+                            System.out.println(new Date() + "Can not recognize !");
                             SimpleAudioPlayer.playMp3("resources/off.wav");
                         } catch (InterruptedException ex) {
                             Logger.getLogger(TimeTrackerMonitor.class.getName()).log(Level.SEVERE, null, ex);
